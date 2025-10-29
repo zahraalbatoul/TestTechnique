@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: 124 58 237; /* purple-600 */
+        --color-primary-hover: 109 40 217; /* purple-700 */
+        --color-secondary: 22 163 74; /* green-600 */
+        --color-secondary-hover: 21 128 61; /* green-700 */
+        --color-accent: 234 88 12; /* orange-600 */
+        --color-accent-hover: 194 65 12; /* orange-700 */
+    }
+}
+
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-semibold text-sm transition focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900;
+    }
+    .btn-primary {
+        @apply btn text-white bg-purple-600 hover:bg-purple-700 focus:ring-purple-500;
+    }
+    .btn-secondary {
+        @apply btn text-white bg-green-600 hover:bg-green-700 focus:ring-green-500;
+    }
+    .btn-accent {
+        @apply btn text-white bg-orange-600 hover:bg-orange-700 focus:ring-orange-500;
+    }
+    .btn-outline {
+        @apply btn border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700;
+    }
+    .link-action {
+        @apply text-purple-600 dark:text-purple-400 hover:underline;
+    }
+    .badge {
+        @apply inline-flex items-center px-2 py-0.5 text-xs font-medium rounded;
+    }
+    .badge-primary { @apply badge bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100; }
+    .badge-success { @apply badge bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100; }
+    .badge-accent { @apply badge bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100; }
+    .badge-neutral { @apply badge bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-100; }
+
+    /* Status badges */
+    .status-todo { @apply badge-neutral; }
+    .status-in_progress { @apply badge-primary; }
+    .status-review { @apply badge-accent; }
+    .status-done { @apply badge-success; }
+
+    /* Form elements */
+    .form-input, .form-select, .form-textarea {
+        @apply rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-purple-500 dark:focus:ring-purple-500 shadow-sm;
+    }
+    .card {
+        @apply bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg;
+    }
+    .card-body {
+        @apply p-6 text-gray-900 dark:text-gray-100;
+    }
+}
