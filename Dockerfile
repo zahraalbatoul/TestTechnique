@@ -2,7 +2,8 @@
 FROM composer:2 AS vendor
 WORKDIR /app
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader
+# Install dependencies without running composer scripts (artisan not present yet)
+RUN composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-scripts
 
 # Runtime stage
 FROM php:8.2-cli
@@ -24,8 +25,9 @@ COPY --from=vendor /app/vendor /app/vendor
 # Ensure storage and bootstrap/cache are writable
 RUN chmod -R ug+rwx storage bootstrap/cache || true
 
-# Generate app key during container build if not present
-RUN php artisan key:generate --force || true 
+# Generate app key if missing, then discover packages
+RUN php artisan key:generate --force || true \
+ && php artisan package:discover --ansi || true
 
 # Default command: run migrations (ignore failures) then start PHP built-in server
 CMD sh -c "php artisan migrate --force || true; php artisan tenants:migrate --force --all || true; php -S 0.0.0.0:$PORT -t public"
