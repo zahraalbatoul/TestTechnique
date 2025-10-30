@@ -1,22 +1,15 @@
 services:
 - type: web
   name: multi-tenant-pm
-  env: php
-  buildCommand: |
-    composer install --no-dev --optimize-autoloader
-    php artisan key:generate --force
-    php artisan config:cache
-    npm ci && npm run build
-  startCommand: |
-    php artisan migrate --force && php artisan tenants:migrate --force --all || true
-    php artisan serve --host 0.0.0.0 --port 
+  runtime: docker
+  plan: free
   envVars:
   - key: APP_ENV
     value: production
   - key: APP_DEBUG
     value: false
   - key: APP_URL
-    value: https://YOUR-SERVICE.onrender.com
+    value: https://multi-tenant-pm.onrender.com
   - key: DB_CONNECTION
     value: pgsql
   - key: DB_HOST
