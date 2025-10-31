@@ -1,0 +1,36 @@
+services:
+- type: web
+  name: multi-tenant-pm
+  runtime: docker
+  plan: free
+  envVars:
+  - key: APP_ENV
+    value: production
+  - key: APP_DEBUG
+    value: false
+  - key: APP_URL
+    value: https://multi-tenant-pm.onrender.com
+  - key: DB_CONNECTION
+    value: pgsql
+  - key: DB_HOST
+    value: dpg-d41kgfje5dus73ddmli0-a.oregon-postgres.render.com
+  - key: DB_PORT
+    value: 5432
+  - key: DB_DATABASE
+    value: centraldb_mmt1
+  - key: DB_USERNAME
+    value: central_user
+  - key: DB_PASSWORD
+    sync: false
+  - key: DB_SSLMODE 
+value: require
+  - key: LOG_CHANNEL
+    value: stderr
+  - key: SESSION_DRIVER
+    value: cookie
+  - key: CACHE_DRIVER
+    value: file
+  - key: QUEUE_CONNECTION
+    value: sync
+  - key: L5_SWAGGER_GENERATE_ALWAYS
+    value: true
