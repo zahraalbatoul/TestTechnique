@@ -12,33 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @if(config('app.env') === 'production' && !file_exists(public_path('build/manifest.json')))
-            <script src="https://cdn.tailwindcss.com"></script>
-            <script>
-                tailwind.config = {
-                    darkMode: 'class',
-                    theme: { extend: { colors: { purple: tailwind.colors.purple, green: tailwind.colors.green, orange: tailwind.colors.orange } } }
-                }
-            </script>
-        @else
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @endif
-        <style>
-            .btn{@apply inline-flex items-center justify-center px-4 py-2 rounded-md font-semibold text-sm transition;}
-            .btn-primary{@apply btn text-white bg-purple-600 hover:bg-purple-700;}
-            .btn-secondary{@apply btn text-white bg-green-600 hover:bg-green-700;}
-            .btn-accent{@apply btn text-white bg-orange-600 hover:bg-orange-700;}
-            .btn-outline{@apply btn border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700;}
-            .card{@apply bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg;}
-            .card-body{@apply p-6 text-gray-900 dark:text-gray-100;}
-            .badge{@apply inline-flex items-center px-2 py-0.5 text-xs font-medium rounded;}
-            .status-todo{@apply badge bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-100;}
-            .status-in_progress{@apply badge bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100;}
-            .status-review{@apply badge bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100;}
-            .status-done{@apply badge bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100;}
-            .link-action{@apply text-purple-600 dark:text-purple-400 hover:underline;}
-            .form-input, .form-select, .form-textarea{@apply rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-purple-500 focus:ring-purple-500 shadow-sm;}
-        </style>
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
