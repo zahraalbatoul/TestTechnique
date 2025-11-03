@@ -16,5 +16,5 @@ cmds = [
 ]
 
 [start]
-cmd = "php artisan migrate --force && php artisan tenants:migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "php artisan vendor:publish --provider='L5Swagger\\L5SwaggerServiceProvider' --force || true; php artisan l5-swagger:generate || true; php artisan migrate --force || true; php artisan tenants:migrate --force || true; php artisan serve --host=0.0.0.0 --port=$PORT"
 
